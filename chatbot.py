@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import re
 
+
+
 # Set Streamlit Page Configuration
 st.set_page_config(page_title="Invoice Chatbot", layout="wide")
 st.title("💬 Turnpikes Chatbot")
@@ -90,7 +92,7 @@ def process_query(query, df):
     status_col = get_column_if_exists(["STATUS", "status", "invoice_status"])
     docid_col = get_column_if_exists(["DOCID", "docid", "document_id"])
 
-    if "how many distinct vendors" in query_lower or "how many suppliers" in query_lower or "how many sellers" in query_lower:
+    if "how many distinct vendors" in query_lower or "how many suppliers are there" in query_lower or "how many sellers are there" in query_lower:
         if vendor_col and vendor_num_col:
             distinct_count = df[vendor_col].nunique()
             vendor_data = df[[vendor_col, vendor_num_col]].drop_duplicates()
